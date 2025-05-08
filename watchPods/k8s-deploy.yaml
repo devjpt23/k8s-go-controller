@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: the-watcher
+  labels:
+    app: the-watcher
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: the-watcher
+  template:
+    metadata:
+      labels:
+        app: the-watcher
+    spec:
+      containers:
+      - name: watching
+        image: devjpt23/watch-pod-deployment:v1
+        ports:
+        - containerPort: 80
